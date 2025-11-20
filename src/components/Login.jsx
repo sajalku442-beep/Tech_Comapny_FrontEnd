@@ -138,6 +138,11 @@ const Login = () => {
                   Login
                 </Button>
               )}
+              <span className="flex w-full justify-center text-white/70">
+                Use email-
+                <div className="text-orange-400 mx-2">admin@gmail.com</div>{" "}
+                password- <span className="text-orange-400 mx-2">admin</span>
+              </span>
             </form>
           </CardContent>
         </Card>
