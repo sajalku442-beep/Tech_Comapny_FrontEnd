@@ -15,7 +15,6 @@ import useGetallcaseblog from "./hookes/getallcaseblog";
 
 const AllCaseStudies = () => {
   useGetallcaseblog();
- 
 
   const { allcaseblogs } = useSelector((store) => store.case);
 
@@ -38,7 +37,6 @@ const AllCaseStudies = () => {
         <ArrowLeft /> Back to Home
       </Link>
       <div className="max-w-7xl mx-auto">
-    
         <motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -48,7 +46,6 @@ const AllCaseStudies = () => {
           Case Studies
         </motion.h1>
 
-      
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <Input
             placeholder="Search case studies..."
@@ -70,7 +67,6 @@ const AllCaseStudies = () => {
           </Select>
         </div>
 
-   
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredCases.map((item, i) => (
             <motion.div
@@ -89,12 +85,12 @@ const AllCaseStudies = () => {
               <p className="text-sm text-violet-300">{item.tag}</p>
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
 
-              <a
-                href={`/case/${item._id}`}
+              <Link
+                to={`/case/${item._id}`}
                 className="text-violet-400 hover:text-violet-300"
               >
                 View Details →
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

@@ -1,11 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar, Share2 } from "lucide-react";
 import { useSelector } from "react-redux";
 import useGetAllInsights from "./hookes/getallinsight";
 import { INSIGHT_API_END_POINT } from "./utils/constant";
-
 
 const dummyInsights = [
   {
@@ -41,9 +40,7 @@ const InsightDetail = () => {
   const { id } = useParams();
   const { allinsights } = useSelector((store) => store.insight);
   const data = allinsights.find((insight) => insight._id === id);
-  
 
- 
   if (!data) {
     return (
       <div className="min-h-screen bg-[#030712] text-white flex items-center justify-center">
@@ -56,12 +53,12 @@ const InsightDetail = () => {
     <div className="min-h-screen bg-[#030712] text-white px-4 py-16">
       <div className="max-w-4xl mx-auto">
         {/* Back */}
-        <a
-          href="/insights"
+        <Link
+          to="/insights"
           className="flex items-center gap-2 text-violet-400 hover:text-violet-300 mb-6"
         >
           <ArrowLeft /> Back to Insights
-        </a>
+        </Link>
 
         <motion.img
           initial={{ opacity: 0 }}
@@ -71,7 +68,6 @@ const InsightDetail = () => {
           className="w-full h-72 object-cover rounded-2xl mb-8"
         />
 
-       
         <h1 className="text-4xl font-bold mb-3">{data.title}</h1>
 
         <div className="text-gray-400 flex items-center gap-4 mb-6">
@@ -85,7 +81,6 @@ const InsightDetail = () => {
 
         <p className="text-violet-300 italic mb-6">{data.summary}</p>
 
-        
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}

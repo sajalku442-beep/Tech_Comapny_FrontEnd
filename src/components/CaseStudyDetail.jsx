@@ -67,13 +67,13 @@ const CaseStudyDetail = () => {
           className="w-full h-72 object-cover rounded-2xl mb-8 border border-white/20"
         />
 
-        {/* Tag */}
+        
         <p className="text-sm text-violet-300">{caseData.tag}</p>
 
-        {/* Title */}
+        
         <h1 className="text-4xl font-bold mt-2 mb-3">{caseData.title}</h1>
 
-        {/* Meta */}
+      
         <div className="flex items-center gap-4 text-gray-400 mb-8">
           <div className="flex items-center gap-2">
             <Calendar size={18} />{" "}
@@ -84,7 +84,7 @@ const CaseStudyDetail = () => {
           </button>
         </div>
 
-        {/* Content */}
+       
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
