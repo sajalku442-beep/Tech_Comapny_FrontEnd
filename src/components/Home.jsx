@@ -27,13 +27,7 @@ const Home = () => {
 
   const { token } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   getallusers(dispatch);
-  //   getallcaseblog(dispatch);
-  //   getAllInsights(dispatch);
-  //   getallcontact(dispatch);
-  // }, [dispatch]);
-
+ 
   useEffect(() => {
     if (token) {
       localStorage.setItem("token", token);

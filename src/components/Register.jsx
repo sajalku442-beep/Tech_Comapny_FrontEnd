@@ -110,7 +110,7 @@ const Register = () => {
                   className="bg-white/20 border-white/30 text-white"
                 />
               </div>
-              {/* Email */}
+              
               <div>
                 <label className="text-gray-300 text-sm mb-1 block">
                   Email
@@ -125,7 +125,7 @@ const Register = () => {
                 />
               </div>
 
-              {/* Password */}
+              
               <div>
                 <label className="text-gray-300 text-sm mb-1 block">
                   Password
@@ -151,7 +151,7 @@ const Register = () => {
                 />
               </div>
 
-              {/* Button */}
+              
               {loading ? (
                 <Button
                   type="submit"

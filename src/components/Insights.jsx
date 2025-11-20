@@ -38,10 +38,10 @@ const Insights = () => {
               </CardHeader>
 
               <CardContent>
-                {/* Summary */}
+                
                 <p className="text-gray-300 mb-4">{item.summary}</p>
 
-                {/* Read More */}
+               
                 <Link
                   to={`/insight/${item._id}`}
                   className="flex items-center text-violet-400 font-semibold hover:text-violet-300"

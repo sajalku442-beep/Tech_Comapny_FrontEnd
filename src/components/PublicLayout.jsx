@@ -2,11 +2,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { motion } from "motion/react";
 
-/**
- * PublicLayout
- * - Glass navbar, simple footer
- * - Place public pages inside <Outlet />
- */
+
 
 const PublicLayout = () => {
   return (
@@ -37,7 +33,7 @@ const PublicLayout = () => {
               </a>
             </div>
 
-            {/* mobile menu placeholder */}
+            
             <div className="md:hidden">
               <button className="p-2 rounded-md">☰</button>
             </div>
@@ -45,7 +41,7 @@ const PublicLayout = () => {
         </div>
       </header>
 
-      {/* MAIN */}
+     
       <main className="flex-1">
         <motion.div
           initial={{ opacity: 0 }}
@@ -57,7 +53,7 @@ const PublicLayout = () => {
         </motion.div>
       </main>
 
-      {/* FOOTER */}
+      
       <footer className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-gray-400 text-sm">
           &copy; {new Date().getFullYear()} Vision Innovations — Built with

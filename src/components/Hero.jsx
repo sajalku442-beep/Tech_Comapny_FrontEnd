@@ -25,7 +25,7 @@ const Hero = () => {
           in Design.
         </motion.h1>
 
-        {/* Subtext */}
+        
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -36,7 +36,7 @@ const Hero = () => {
           immersive UI, and cutting-edge engineering.
         </motion.p>
 
-        {/* CTA Button */}
+        
       </section>
     </div>
   );

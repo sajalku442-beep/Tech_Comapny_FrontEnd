@@ -22,7 +22,7 @@ const EditCaseStudy = () => {
     preview: "",
   });
 
-  // FETCH SINGLE CASE STUDY
+  
   const loadCaseStudy = async () => {
     try {
       const res = await axios.get(`${CASEBLOG_API_END_POINT}/get/${id}`, {

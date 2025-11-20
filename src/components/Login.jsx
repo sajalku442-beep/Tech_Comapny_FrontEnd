@@ -94,7 +94,7 @@ const Login = () => {
 
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-6 mt-4">
-              {/* Email */}
+              
               <div>
                 <label className="text-gray-300 text-sm mb-1 block">
                   Email
@@ -108,7 +108,7 @@ const Login = () => {
                 />
               </div>
 
-              {/* Password */}
+              
               <div>
                 <label className="text-gray-300 text-sm mb-1 block">
                   Password
@@ -122,7 +122,7 @@ const Login = () => {
                 />
               </div>
 
-              {/* Button */}
+            
               {loading ? (
                 <Button
                   type="submit"

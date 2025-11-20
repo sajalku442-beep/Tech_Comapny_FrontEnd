@@ -93,7 +93,7 @@ const AdminLayout = () => {
         </nav>
       </aside>
 
-      {/* Main Content */}
+      
       <main className="flex-1 p-8 overflow-y-auto">
         <Outlet />
       </main>

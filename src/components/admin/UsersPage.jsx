@@ -32,7 +32,7 @@ const UsersPage = () => {
 
   return (
     <div className="text-white">
-      {/* Title */}
+      
       <motion.h1
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const UsersPage = () => {
         Users Management
       </motion.h1>
 
-      {/* Table */}
+     
       <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-xl">
         <table className="w-full text-left">
           <thead>
@@ -62,7 +62,7 @@ const UsersPage = () => {
                 transition={{ delay: index * 0.1 }}
                 className="border-b border-white/10 hover:bg-white/5"
               >
-                {/* User Info */}
+                
                 <td className="py-4 flex items-center gap-3">
                   <img
                     src={user?.image || "/default-user.png"}
@@ -72,10 +72,9 @@ const UsersPage = () => {
                   <span className="font-medium">{user.username}</span>
                 </td>
 
-                {/* Email */}
+               
                 <td className="py-4 text-gray-300">{user.email}</td>
 
-                {/* Actions */}
                 <td className="py-4 text-center">
                   <button
                     onClick={() => handleDelete(user._id)}

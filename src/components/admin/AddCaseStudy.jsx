@@ -90,7 +90,7 @@ const AddCaseStudy = () => {
 
   return (
     <div className="text-white max-w-3xl mx-auto">
-      {/* Title */}
+     
       <motion.h1
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ const AddCaseStudy = () => {
         Add New Case Study
       </motion.h1>
 
-      {/* Form Card */}
+     
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ const AddCaseStudy = () => {
         className="p-6 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Tag */}
+         
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Tag</label>
             <Input
@@ -121,7 +121,7 @@ const AddCaseStudy = () => {
             />
           </div>
 
-          {/* Title */}
+         
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Title</label>
             <Input
@@ -134,7 +134,7 @@ const AddCaseStudy = () => {
             />
           </div>
 
-          {/* Content */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Description
@@ -149,7 +149,7 @@ const AddCaseStudy = () => {
             />
           </div>
 
-          {/* Image Upload */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Upload Image
@@ -165,7 +165,7 @@ const AddCaseStudy = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
+          
 
           {loading ? (
             <Button

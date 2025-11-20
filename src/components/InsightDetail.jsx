@@ -43,21 +43,7 @@ const InsightDetail = () => {
   const data = allinsights.find((insight) => insight._id === id);
   
 
-  //  const fetchinsight = async () => {
-  //    try {
-  //      const res = await axios.get(`${INSIGHT_API_END_POINT_API_END_POINT}/get/${id}`);
-  //      if (res?.data?.success) {
-  //        console.log(res.data.insight);
-
-  //        setCaseData(res?.data?.blog);
-  //      }
-  //    } catch (error) {
-  //      console.log("Error fetching case details:", error);
-  //    } finally {
-  //      setLoading(false);
-  //    }
-  //  };
-
+ 
   if (!data) {
     return (
       <div className="min-h-screen bg-[#030712] text-white flex items-center justify-center">
@@ -77,7 +63,6 @@ const InsightDetail = () => {
           <ArrowLeft /> Back to Insights
         </a>
 
-        {/* Header Image */}
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -86,7 +71,7 @@ const InsightDetail = () => {
           className="w-full h-72 object-cover rounded-2xl mb-8"
         />
 
-        {/* Title */}
+       
         <h1 className="text-4xl font-bold mb-3">{data.title}</h1>
 
         <div className="text-gray-400 flex items-center gap-4 mb-6">
@@ -98,10 +83,9 @@ const InsightDetail = () => {
           </button>
         </div>
 
-        {/* Summary */}
         <p className="text-violet-300 italic mb-6">{data.summary}</p>
 
-        {/* Content */}
+        
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}

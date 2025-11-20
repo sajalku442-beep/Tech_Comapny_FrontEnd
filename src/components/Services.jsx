@@ -24,7 +24,7 @@ const Services = () => {
   return (
     <section id="services" >
       <div className="pt-20 pb-10 bg-[#0b0f19] text-white px-6 max-w-6xl mx-auto">
-        {/* Section Heading */}
+       
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ const Services = () => {
           Our Services
         </motion.h2>
 
-        {/* Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div

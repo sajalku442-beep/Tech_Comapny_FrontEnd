@@ -76,7 +76,7 @@ const AddInsight = () => {
 
   return (
     <div className="text-white max-w-3xl mx-auto">
-      {/* Page Title */}
+      
       <motion.h1
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ const AddInsight = () => {
         Add New Insight / Blog
       </motion.h1>
 
-      {/* Form */}
+     
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ const AddInsight = () => {
         className="p-6 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Title */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Title</label>
             <Input
@@ -107,7 +107,7 @@ const AddInsight = () => {
             />
           </div>
 
-          {/* Summary */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               SEO Summary (1–2 lines)
@@ -122,7 +122,6 @@ const AddInsight = () => {
             />
           </div>
 
-          {/* Content */}
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Full Article Content
@@ -150,7 +149,7 @@ const AddInsight = () => {
             />
           </div>
 
-          {/* Image Upload */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Cover Image
@@ -166,7 +165,7 @@ const AddInsight = () => {
             </div>
           </div>
 
-          {/* Submit */}
+         
           {loading ? (
             <Button
               type="submit"

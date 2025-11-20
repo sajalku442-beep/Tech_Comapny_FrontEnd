@@ -51,7 +51,7 @@ const AllInsights = () => {
         >
           <ArrowLeft /> Back to Home
         </Link>
-        {/* TITLE */}
+      
         <motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const AllInsights = () => {
           Insights & Articles
         </motion.h1>
 
-        {/* SEARCH + FILTER */}
+       
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <Input
             placeholder="Search insights..."
@@ -83,7 +83,7 @@ const AllInsights = () => {
           </Select>
         </div>
 
-        {/* GRID */}
+       
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredInsights.map((item, i) => (
             <motion.div

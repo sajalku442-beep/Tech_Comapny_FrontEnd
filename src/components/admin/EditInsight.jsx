@@ -22,7 +22,7 @@ const EditInsight = () => {
     preview: "",
   });
 
-  // FETCH SINGLE INSIGHT
+  
   const loadInsight = async () => {
     try {
       const res = await axios.get(`${INSIGHT_API_END_POINT}/get/${id}`, {
@@ -115,7 +115,7 @@ const EditInsight = () => {
         className="p-6 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Title */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Title</label>
             <Input
@@ -127,7 +127,7 @@ const EditInsight = () => {
             />
           </div>
 
-          {/* SEO Summary */}
+
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Short SEO Summary (150–300 characters)
@@ -142,7 +142,7 @@ const EditInsight = () => {
             />
           </div>
 
-          {/* Content */}
+         
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Content</label>
             <Textarea
@@ -154,7 +154,7 @@ const EditInsight = () => {
             />
           </div>
 
-          {/* Image */}
+          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Insight Banner Image

@@ -9,7 +9,7 @@ const Footer = () => {
         transition={{ duration: 0.8 }}
         className="max-w-7xl mx-auto px-6 text-center"
       >
-        {/* Logo */}
+      
         <h1
           className="text-lg font-bold tracking-widest bg-gradient-to-r 
                        from-cyan-400 to-violet-400 bg-clip-text text-transparent"
@@ -17,19 +17,19 @@ const Footer = () => {
           VISION INNOVATIONS
         </h1>
 
-        {/* Tagline */}
+        
         <p className="text-gray-500 text-sm mt-2">
           Precision in Code. Vision in Design.
         </p>
 
-        {/* Divider */}
+      
         <div
           className="w-24 h-[1px] bg-gradient-to-r 
                         from-transparent via-cyan-400 to-transparent 
                         mx-auto my-5 opacity-50"
         ></div>
 
-        {/* Links */}
+       
         <div className="flex justify-center gap-8 text-sm mb-6">
           <a
             className="text-gray-400 hover:text-cyan-400 transition"
@@ -57,7 +57,7 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Bottom */}
+       
         <p className="text-xs text-gray-600">
           © {new Date().getFullYear()} Vision Innovations. All Rights Reserved.
         </p>

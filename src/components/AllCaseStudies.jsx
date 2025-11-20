@@ -15,28 +15,8 @@ import useGetallcaseblog from "./hookes/getallcaseblog";
 
 const AllCaseStudies = () => {
   useGetallcaseblog();
-  // const dummyCases = [
-  //   {
-  //     id: "1",
-  //     tag: "AI / Healthcare",
-  //     title: "AI-driven Diagnostic Dashboard",
-  //     image:
-  //       "https://images.unsplash.com/photo-1581091870627-3b6bdc5e4d83?w=400",
-  //   },
-  //   {
-  //     id: "2",
-  //     tag: "E-commerce",
-  //     title: "Retail Conversion Optimization",
-  //     image:
-  //       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400",
-  //   },
-  //   {
-  //     id: "3",
-  //     tag: "Fintech",
-  //     title: "Fraud Detection System",
-  //     image: "https://images.unsplash.com/photo-1556742400-b5c7481537b2?w=400",
-  //   },
-  // ];
+ 
+
   const { allcaseblogs } = useSelector((store) => store.case);
 
   const [search, setSearch] = useState("");
@@ -58,7 +38,7 @@ const AllCaseStudies = () => {
         <ArrowLeft /> Back to Home
       </Link>
       <div className="max-w-7xl mx-auto">
-        {/* PAGE TITLE */}
+    
         <motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,7 +48,7 @@ const AllCaseStudies = () => {
           Case Studies
         </motion.h1>
 
-        {/* SEARCH + FILTER */}
+      
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <Input
             placeholder="Search case studies..."
@@ -90,7 +70,7 @@ const AllCaseStudies = () => {
           </Select>
         </div>
 
-        {/* GRID */}
+   
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredCases.map((item, i) => (
             <motion.div

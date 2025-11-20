@@ -46,12 +46,12 @@ const AboutTimeline=()=> {
             transition={{ duration: 0.7, delay: item.delay }}
             className="flex flex-col md:flex-row mb-16 items-start relative"
           >
-            {/* Year Label */}
+            
             <div className="md:w-1/4 text-2xl font-bold text-cyan-400 drop-shadow-[0_0_8px_rgba(14,165,233,0.6)] mb-4 md:mb-0">
               {item.year}
             </div>
 
-            {/* Content Box */}
+         
             <div
               className="
               md:w-3/4 p-6 rounded-xl 

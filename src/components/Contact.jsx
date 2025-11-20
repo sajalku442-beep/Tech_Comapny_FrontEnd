@@ -61,7 +61,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 bg-[#0a0a0a] px-6">
-      {/* Heading */}
+      
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +84,6 @@ const Contact = () => {
         Tell us about your next project — and let’s build the future together.
       </motion.p>
 
-      {/* Form */}
       <motion.form
         onSubmit={handleSubmit}
         initial={{ opacity: 0, y: 30 }}
@@ -95,7 +94,7 @@ const Contact = () => {
                    bg-white/10 backdrop-blur-xl 
                    border border-white/20 hover:scale-102 transition duration-300"
       >
-        {/* Full Name */}
+      
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Full Name
@@ -113,7 +112,7 @@ const Contact = () => {
           />
         </div>
 
-        {/* Email */}
+       
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Email Address
@@ -131,7 +130,6 @@ const Contact = () => {
           />
         </div>
 
-        {/* Project Details */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-300 mb-2">
             Project Details
@@ -149,7 +147,7 @@ const Contact = () => {
           ></textarea>
         </div>
 
-        {/* Submit Button */}
+       
         {/* <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

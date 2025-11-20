@@ -39,7 +39,7 @@ const Navbar = () => {
     });
   };
 
-  // Smooth scroll logic
+  
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -55,7 +55,7 @@ const Navbar = () => {
     setOpen(false); // close mobile menu
   };
 
-  // Highlight section on scroll
+  
   useEffect(() => {
     const sections = ["hero", "about", "services", "portfolio", "contact"];
 
@@ -85,12 +85,12 @@ const Navbar = () => {
                  bg-white/10 backdrop-blur-xl border-b border-white/20"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+        
         <h1 className="cursor-pointer  text-xl font-semibold text-white">
           Vision Innovations
         </h1>
 
-        {/* Desktop Navigation */}
+        
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <button
@@ -137,7 +137,7 @@ const Navbar = () => {
                     transition={{ duration: 0.25 }}
                     className="space-y-4"
                   >
-                    {/* Header */}
+                    
                     <div className="flex items-center gap-3">
                       <Avatar className="ring-2 ring-violet-500 rounded-full">
                         <AvatarImage src={user?.image} alt={user?.username} />
@@ -159,16 +159,7 @@ const Navbar = () => {
 
                     {/* Options */}
                     <div className="flex flex-col gap-3 pt-2">
-                      {/* <Link to="/profile">
-                        <button
-                          className="flex items-center gap-2 w-full 
-                text-gray-200 hover:text-white 
-                hover:bg-white/10 p-2 rounded-md transition"
-                        >
-                          <User2 className="h-4 w-4 text-violet-400" />
-                          View Profile
-                        </button>
-                      </Link> */}
+                      
 
                       <button
                         onClick={logoutHandler}
