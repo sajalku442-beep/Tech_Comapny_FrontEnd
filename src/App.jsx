@@ -17,6 +17,8 @@ import AllCaseStudies from "./components/AllCaseStudies";
 import AllInsights from "./components/AllInsights";
 import CaseStudyDetail from "./components/CaseStudyDetail";
 import InsightDetail from "./components/InsightDetail";
+import UserProfile from "./components/Profile";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -33,23 +35,84 @@ function App() {
       element: <Register />,
     },
     {
+      path: "/profile",
+      element: <UserProfile />,
+    },
+    {
       path: "/admin",
-      element: <AdminLayout />,
+      element: (
+        <ProtectedRoute>
+          <AdminLayout />
+        </ProtectedRoute>
+      ),
       children: [
         {
           path: "dashboard",
           element: <AdminDashboard />,
         },
-        { path: "users", element: <UsersPage /> },
-        { path: "cases", element: <CaseStudiesPage /> },
-        { path: "insights", element: <InsightsPage /> },
-        { path: "messages", element: <MessagesPage /> },
-        { path: "cases/add", element: <AddCaseStudy /> },
-        { path: "insights/add", element: <AddInsight /> },
-        { path: "cases/edit/:id", element: <EditCaseStudy /> },
+        {
+          path: "users",
+          element: (
+            <ProtectedRoute>
+              <UsersPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "cases",
+          element: (
+            <ProtectedRoute>
+              <CaseStudiesPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "insights",
+          element: (
+            <ProtectedRoute>
+              <InsightsPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "messages",
+          element: (
+            <ProtectedRoute>
+              <MessagesPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "cases/add",
+          element: (
+            <ProtectedRoute>
+               <AddCaseStudy />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "insights/add",
+          element: (
+            <ProtectedRoute>
+              <AddInsight />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "cases/edit/:id",
+          element: (
+            <ProtectedRoute>
+              <EditCaseStudy />
+            </ProtectedRoute>
+          ),
+        },
         {
           path: "insights/edit/:id",
-          element: <EditInsight />,
+          element: (
+            <ProtectedRoute>
+              <EditInsight />
+            </ProtectedRoute>
+          ),
         },
       ],
     },

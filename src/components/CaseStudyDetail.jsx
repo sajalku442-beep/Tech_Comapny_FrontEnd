@@ -49,7 +49,7 @@ const CaseStudyDetail = () => {
   return (
     <div className="min-h-screen bg-[#030712] text-white px-4 py-16">
       <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
+        
         <Link
           to="/cases"
           className="flex items-center gap-2 text-violet-400 hover:text-violet-300 mb-6"
@@ -57,7 +57,7 @@ const CaseStudyDetail = () => {
           <ArrowLeft /> Back to Case Studies
         </Link>
 
-        {/* Header Image */}
+
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

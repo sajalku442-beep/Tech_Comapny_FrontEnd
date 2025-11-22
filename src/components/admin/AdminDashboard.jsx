@@ -24,7 +24,6 @@ import useGetAllInsights from "../hookes/getallinsight";
 import useGetallcontact from "../hookes/getallcontact";
 
 const AdminDashboard = () => {
-  
   useGetallusers();
   useGetallcaseblog();
   useGetAllInsights();
@@ -36,26 +35,19 @@ const AdminDashboard = () => {
   const { allcaseblogs } = useSelector((store) => store.case);
   const { allinsights } = useSelector((store) => store.insight);
   const { allContacts } = useSelector((store) => store.contact);
-  
-
-  
-  
 
   return (
     <div className="text-white">
-      
       <motion.h1
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="text-4xl font-bold mb-6"
+        className="text-4xl font-bold mb-6 text-center"
       >
         Admin Dashboard
       </motion.h1>
 
-      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -69,7 +61,6 @@ const AdminDashboard = () => {
           <p className="text-3xl font-bold mt-3">{allUsers?.length || 0}</p>
         </motion.div>
 
-        
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -83,7 +74,6 @@ const AdminDashboard = () => {
           <p className="text-3xl font-bold mt-3">{allcaseblogs?.length || 0}</p>
         </motion.div>
 
-       
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -97,7 +87,6 @@ const AdminDashboard = () => {
           <p className="text-3xl font-bold mt-3">{allinsights?.length || 0}</p>
         </motion.div>
 
-       
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -112,7 +101,6 @@ const AdminDashboard = () => {
         </motion.div>
       </div>
 
-      
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}

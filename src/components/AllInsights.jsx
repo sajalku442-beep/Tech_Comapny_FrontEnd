@@ -44,6 +44,13 @@ const AllInsights = () => {
 
   return (
     <div className="min-h-screen bg-[#030712] text-white px-4 py-16">
+      {!allinsights || allinsights.length === 0 ? (
+        <div className="min-h-screen bg-[#030712] text-white flex items-center justify-center">
+          <p className="text-xl">Loading</p>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="max-w-7xl mx-auto">
         <Link
           to={"/"}
@@ -51,7 +58,7 @@ const AllInsights = () => {
         >
           <ArrowLeft /> Back to Home
         </Link>
-      
+
         <motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,7 +68,6 @@ const AllInsights = () => {
           Insights & Articles
         </motion.h1>
 
-       
         <div className="flex flex-col md:flex-row gap-4 mb-10">
           <Input
             placeholder="Search insights..."
@@ -79,11 +85,12 @@ const AllInsights = () => {
               <SelectItem value="AI">AI</SelectItem>
               <SelectItem value="Design">Design</SelectItem>
               <SelectItem value="Business">Business</SelectItem>
+              <SelectItem value="Seo">Seo</SelectItem>
+              <SelectItem value="Others">Others</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
-       
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredInsights.map((item, i) => (
             <motion.div
@@ -91,7 +98,7 @@ const AllInsights = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-xl"
+              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-xl hover:scale-102 transition duration-300"
             >
               <img
                 src={item.image}

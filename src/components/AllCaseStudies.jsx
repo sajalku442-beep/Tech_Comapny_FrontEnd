@@ -19,18 +19,93 @@ const AllCaseStudies = () => {
   const { allcaseblogs } = useSelector((store) => store.case);
 
   const [search, setSearch] = useState("");
-  const [filterTag, setFilterTag] = useState("All");
+  const [filtercategory, setFiltercategory] = useState("All");
 
   const filteredCases = allcaseblogs.filter((c) => {
     return (
-      (filterTag === "All" || c.tag === filterTag) &&
+      (filtercategory === "All" || c.category === filtercategory) &&
       c.title.toLowerCase().includes(search.toLowerCase())
     );
   });
 
   return (
     <div className="min-h-screen bg-[#030712] text-white px-4 py-16">
-      <Link
+      {!allcaseblogs || allcaseblogs.length === 0 ? (
+        <div className="min-h-screen bg-[#030712] text-white flex items-center justify-center">
+          <p className="text-xl">Loading</p>
+        </div>
+      ) : (
+        <>
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-violet-400 hover:text-violet-300 mb-6"
+          >
+            <ArrowLeft /> Back to Home
+          </Link>
+          <div className="max-w-7xl mx-auto">
+            <motion.h1
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="text-4xl font-bold mb-6"
+            >
+              Case Studies
+            </motion.h1>
+
+            <div className="flex flex-col md:flex-row gap-4 mb-10">
+              <Input
+                placeholder="Search case studies..."
+                className="bg-white/10 border-white/20 text-white"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+
+              <Select onValueChange={setFiltercategory} defaultValue="All">
+                <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                  {filtercategory}
+                </SelectTrigger>
+                <SelectContent className="bg-[#1c1c1c] text-white">
+                  <SelectItem value="All">All</SelectItem>
+                  <SelectItem value="AI">AI</SelectItem>
+                  <SelectItem value="Ecommerce">E-commerce</SelectItem>
+                  <SelectItem value="Fintech">Fintech</SelectItem>
+                  <SelectItem value="Business">Business</SelectItem>
+                  <SelectItem value="Others">Others</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {filteredCases.map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-xl hover:scale-102 transition duration-300"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-40 object-cover rounded-xl mb-4"
+                  />
+
+                  <p className="text-sm text-violet-300">{item.tag}</p>
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+
+                  <Link
+                    to={`/case/${item._id}`}
+                    className="text-violet-400 hover:text-violet-300"
+                  >
+                    View Details →
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+      {/* <Link
         to="/"
         className="flex items-center gap-2 text-violet-400 hover:text-violet-300 mb-6"
       >
@@ -54,15 +129,17 @@ const AllCaseStudies = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
 
-          <Select onValueChange={setFilterTag} defaultValue="All">
+          <Select onValueChange={setFiltercategory} defaultValue="All">
             <SelectTrigger className="bg-white/10 border-white/20 text-white">
-              {filterTag}
+              {filtercategory}
             </SelectTrigger>
             <SelectContent className="bg-[#1c1c1c] text-white">
               <SelectItem value="All">All</SelectItem>
               <SelectItem value="AI">AI</SelectItem>
               <SelectItem value="Ecommerce">E-commerce</SelectItem>
               <SelectItem value="Fintech">Fintech</SelectItem>
+              <SelectItem value="Business">Business</SelectItem>
+              <SelectItem value="Others">Others</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -74,7 +151,7 @@ const AllCaseStudies = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-xl"
+              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-xl hover:scale-102 transition duration-300"
             >
               <img
                 src={item.image}
@@ -94,7 +171,7 @@ const AllCaseStudies = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

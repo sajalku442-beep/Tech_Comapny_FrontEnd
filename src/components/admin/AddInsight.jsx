@@ -11,6 +11,14 @@ import { INSIGHT_API_END_POINT } from "../utils/constant.js";
 import getallcaseblog from "../hookes/getallcaseblog.jsx";
 import getAllInsights from "../hookes/getallinsight.jsx";
 import { setLoading } from "../redux/authSlice";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select.jsx";
 
 const AddInsight = () => {
   const [form, setForm] = useState({
@@ -20,6 +28,7 @@ const AddInsight = () => {
     content: "",
     image: null,
   });
+  const cat = ["All", "AI", "Business", "Design", "Seo", "Others"];
   const { loading, token } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -29,7 +38,9 @@ const AddInsight = () => {
   const handleImage = (e) => {
     setForm({ ...form, image: e.target.files?.[0] });
   };
-
+  const valueChanger = (value) => {
+    setForm({ ...form, category: value });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -57,12 +68,20 @@ const AddInsight = () => {
       console.log(loading);
 
       if (res?.data?.success) {
-        toast("Insight added successfully!");
+        toast("Insight added successfully!", {
+          style: {
+            background: "rgba(255,255,255,0.1)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            color: "#fff",
+            fontWeight: 600,
+          },
+        });
         setForm({
           title: "",
           summary: "",
           content: "",
-          category:"",
+          category: "",
           image: null,
         });
       }
@@ -76,17 +95,15 @@ const AddInsight = () => {
 
   return (
     <div className="text-white max-w-3xl mx-auto">
-      
       <motion.h1
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="text-3xl font-bold mb-6"
+        className="text-3xl font-bold mb-6 text-center"
       >
         Add New Insight / Blog
       </motion.h1>
 
-     
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,7 +111,6 @@ const AddInsight = () => {
         className="p-6 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Title</label>
             <Input
@@ -107,7 +123,6 @@ const AddInsight = () => {
             />
           </div>
 
-          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               SEO Summary (1–2 lines)
@@ -135,7 +150,7 @@ const AddInsight = () => {
               className="bg-white/20 border-white/30 text-white"
             />
           </div>
-          <div>
+          {/* <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Choose Category
             </label>
@@ -147,10 +162,37 @@ const AddInsight = () => {
               onChange={handleChange}
               className="bg-white/20 border-white/30 text-white"
             />
+          </div> */}
+          <div className="flex flex-col sm:flex-row  gap-5 justify-between">
+            <div>
+              <Select value={form.category} onValueChange={valueChanger}>
+                <SelectTrigger className="" type="button">
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
+                <SelectContent className="bg-[#1b1d29] text-white">
+                  <SelectGroup>
+                    {cat?.map((data) => {
+                      return <SelectItem value={data}>{data}</SelectItem>;
+                    })}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <div className="flex items-center gap-3">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImage}
+                  className="bg-white/20 border-white/30 text-white cursor-pointer"
+                />
+                <ImagePlus />
+              </div>
+            </div>
           </div>
 
-          
-          <div>
+          {/* <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Cover Image
             </label>
@@ -163,9 +205,8 @@ const AddInsight = () => {
               />
               <ImagePlus />
             </div>
-          </div>
+          </div> */}
 
-         
           {loading ? (
             <Button
               type="submit"

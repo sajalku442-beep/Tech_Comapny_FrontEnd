@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import {
   Home,
@@ -7,6 +7,8 @@ import {
   FolderKanban,
   FileText,
   LogOut,
+  Menu,
+  X,
 } from "lucide-react";
 import { setAuthenticate, setToken, setUser } from "../redux/authSlice";
 import { useDispatch } from "react-redux";
@@ -24,6 +26,9 @@ const AdminLayout = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [openSidebar, setOpenSidebar] = useState(false);
+
   const logoutHandler = () => {
     localStorage.removeItem("token");
     dispatch(setToken(null));
@@ -40,17 +45,43 @@ const AdminLayout = () => {
     });
     navigate("/");
   };
+
   return (
-    <div className="min-h-screen flex bg-[#030712] text-white">
-      {/* Sidebar */}
-      <aside className="w-64 h-full bg-white/10 backdrop-blur-xl border-r border-white/20 p-6">
-        <h1 className="text-2xl font-bold mb-8">
+    <div className="min-h-screen flex bg-[#030712] text-white relative">
+      
+      <button
+        onClick={() => setOpenSidebar(true)}
+        className="absolute top-4 left-4 z-50 md:hidden p-2 bg-white/10 rounded-lg border border-white/20"
+      >
+        <Menu size={22} />
+      </button>
+
+     
+      <aside
+        className={`
+          fixed md:static top-0 left-0 h-full w-64 bg-white/10 backdrop-blur-xl 
+          border-r border-white/20 p-6 z-40 transform transition-transform duration-300
+          ${
+            openSidebar ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+          }
+        `}
+      >
+        
+        <button
+          onClick={() => setOpenSidebar(false)}
+          className="md:hidden absolute top-4 right-4 text-gray-300 hover:text-white"
+        >
+          <X size={22} />
+        </button>
+
+        <h1 className="text-2xl font-bold mb-8 mt-8 md:mt-0">
           Admin <span className="text-violet-400">Panel</span>
         </h1>
 
         <nav className="space-y-4">
           <Link
             to="/admin/dashboard"
+            onClick={() => setOpenSidebar(false)}
             className="flex items-center gap-3 hover:text-violet-400"
           >
             <Home size={18} /> Dashboard
@@ -58,6 +89,7 @@ const AdminLayout = () => {
 
           <Link
             to="/admin/users"
+            onClick={() => setOpenSidebar(false)}
             className="flex items-center gap-3 hover:text-violet-400"
           >
             <Users size={18} /> Users
@@ -65,6 +97,7 @@ const AdminLayout = () => {
 
           <Link
             to="/admin/messages"
+            onClick={() => setOpenSidebar(false)}
             className="flex items-center gap-3 hover:text-violet-400"
           >
             <Inbox size={18} /> Messages
@@ -72,6 +105,7 @@ const AdminLayout = () => {
 
           <Link
             to="/admin/cases"
+            onClick={() => setOpenSidebar(false)}
             className="flex items-center gap-3 hover:text-violet-400"
           >
             <FolderKanban size={18} /> Case Studies
@@ -79,6 +113,7 @@ const AdminLayout = () => {
 
           <Link
             to="/admin/insights"
+            onClick={() => setOpenSidebar(false)}
             className="flex items-center gap-3 hover:text-violet-400"
           >
             <FileText size={18} /> Insights

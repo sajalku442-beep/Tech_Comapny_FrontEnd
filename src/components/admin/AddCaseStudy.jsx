@@ -11,14 +11,24 @@ import { setLoading } from "../redux/authSlice";
 import { setCaseblog } from "../redux/caseSlice";
 import { toast } from "sonner";
 import axios from "axios";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const AddCaseStudy = () => {
   const [form, setForm] = useState({
     tag: "",
     title: "",
     content: "",
+    category: "",
     image: null,
   });
+  const cat = ["All", "AI", "Business", "Fintech", "Ecomerce", "Others"];
   const { loading, token } = useSelector((store) => store.auth);
 
   const { caseblog } = useSelector((store) => store.case);
@@ -31,14 +41,19 @@ const AddCaseStudy = () => {
   const handleImage = (e) => {
     setForm({ ...form, image: e.target.files?.[0] });
   };
+  const valueChanger = (value) => {
+    setForm({ ...form, category: value });
+  };
+  // console.log(form);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Case Study Submitted:", form);
+    // console.log("Case Study Submitted:", form);
     const formData = new FormData();
     formData.append("tag", form.tag);
     formData.append("title", form.title);
     formData.append("content", form.content);
+    formData.append("category", form.category);
     if (form.image) {
       formData.append("image", form.image);
     }
@@ -90,17 +105,15 @@ const AddCaseStudy = () => {
 
   return (
     <div className="text-white max-w-3xl mx-auto">
-     
       <motion.h1
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="text-3xl font-bold mb-6"
+        className="text-3xl font-bold mb-6 text-center"
       >
         Add New Case Study
       </motion.h1>
 
-     
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -108,7 +121,6 @@ const AddCaseStudy = () => {
         className="p-6 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-         
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Tag</label>
             <Input
@@ -121,7 +133,6 @@ const AddCaseStudy = () => {
             />
           </div>
 
-         
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Title</label>
             <Input
@@ -134,7 +145,6 @@ const AddCaseStudy = () => {
             />
           </div>
 
-          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Description
@@ -148,24 +158,38 @@ const AddCaseStudy = () => {
               className="bg-white/20 border-white/30 text-white"
             />
           </div>
+          <div className="flex flex-col sm:flex-row gap-5 justify-between">
+            <div>
+              <Select value={form.category} onValueChange={valueChanger}>
+                <SelectTrigger className="" type="button">
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
+                <SelectContent className="bg-[#1b1d29] text-white">
+                  <SelectGroup>
+                    {cat?.map((data) => {
+                      return (
+                        <SelectItem key={data} value={data}>
+                          {data}
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
 
-          
-          <div>
-            <label className="text-gray-300 mb-1 block text-sm">
-              Upload Image
-            </label>
-            <div className="flex items-center gap-3">
-              <Input
-                type="file"
-                accept="image/*"
-                onChange={handleImage}
-                className="bg-white/20 border-white/30 text-white cursor-pointer"
-              />
-              <ImagePlus />
+            <div>
+              <div className="flex items-center gap-3">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImage}
+                  className="bg-white/20 border-white/30 text-white cursor-pointer"
+                />
+                <ImagePlus />
+              </div>
             </div>
           </div>
-
-          
 
           {loading ? (
             <Button

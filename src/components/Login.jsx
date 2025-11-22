@@ -88,13 +88,12 @@ const Login = () => {
         <Card className="bg-white/10 backdrop-blur-xl border-white/20 shadow-xl">
           <CardHeader>
             <CardTitle className="text-center text-3xl font-bold text-white">
-              Admin Login
+              Login
             </CardTitle>
           </CardHeader>
 
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-6 mt-4">
-              
               <div>
                 <label className="text-gray-300 text-sm mb-1 block">
                   Email
@@ -108,7 +107,6 @@ const Login = () => {
                 />
               </div>
 
-              
               <div>
                 <label className="text-gray-300 text-sm mb-1 block">
                   Password
@@ -122,7 +120,6 @@ const Login = () => {
                 />
               </div>
 
-            
               {loading ? (
                 <Button
                   type="submit"

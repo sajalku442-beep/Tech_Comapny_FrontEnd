@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { Zap } from "lucide-react";
-import Reveal from "./Reveal";
+
 
 const Hero = () => {
   return (

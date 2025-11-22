@@ -26,7 +26,15 @@ const MessagesPage = () => {
       });
 
       if (res.data.success) {
-        toast.success("Message deleted");
+        toast.success("Message deleted", {
+          style: {
+            background: "rgba(255,255,255,0.1)",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            color: "#fff",
+            fontWeight: 600,
+          },
+        });
 
        
         setMessages((prev) => prev.filter((msg) => msg._id !== id));

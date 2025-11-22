@@ -39,7 +39,6 @@ const Navbar = () => {
     });
   };
 
-  
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -55,7 +54,6 @@ const Navbar = () => {
     setOpen(false); // close mobile menu
   };
 
-  
   useEffect(() => {
     const sections = ["hero", "about", "services", "portfolio", "contact"];
 
@@ -85,12 +83,10 @@ const Navbar = () => {
                  bg-white/10 backdrop-blur-xl border-b border-white/20"
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        
         <h1 className="cursor-pointer  text-xl font-semibold text-white">
           Vision Innovations
         </h1>
 
-        
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <button
@@ -108,11 +104,20 @@ const Navbar = () => {
         </div>
         <div className="hidden md:block">
           {!user ? (
-            <Link to={"/login"}>
-              <Button className="cursor-pointer bg-violet text-white hover:bg-violet/80">
-                Admin Login
-              </Button>
-            </Link>
+            <>
+              <div className="flex">
+                <Link to={"/login"}>
+                  <Button className="cursor-pointer bg-violet text-white hover:bg-violet/80">
+                    Login
+                  </Button>
+                </Link>
+                <Link to={"/register"}>
+                  <Button className="cursor-pointer bg-violet text-white hover:bg-violet/80">
+                    Register
+                  </Button>
+                </Link>
+              </div>
+            </>
           ) : (
             <div>
               <Popover>
@@ -137,7 +142,6 @@ const Navbar = () => {
                     transition={{ duration: 0.25 }}
                     className="space-y-4"
                   >
-                    
                     <div className="flex items-center gap-3">
                       <Avatar className="ring-2 ring-violet-500 rounded-full">
                         <AvatarImage src={user?.image} alt={user?.username} />
@@ -159,7 +163,14 @@ const Navbar = () => {
 
                     {/* Options */}
                     <div className="flex flex-col gap-3 pt-2">
-                      
+                      <div
+                        className="flex items-center gap-2 w-full
+                text-gray-200 hover:text-white 
+                hover:bg-white/20 p-2 rounded-md transition"
+                      >
+                        <User2 />
+                        <Link to={`/profile`}> Profile</Link>
+                      </div>
 
                       <button
                         onClick={logoutHandler}
@@ -212,11 +223,18 @@ const Navbar = () => {
           ))}
           <div>
             {!user ? (
-              <Link to={"/login"}>
-                <Button className="cursor-pointer mx-auto bg-violet text-white hover:bg-violet/80">
-                  Admin Login
-                </Button>
-              </Link>
+              <div className="flex">
+                <Link to={"/login"}>
+                  <Button className="cursor-pointer bg-violet text-white hover:bg-violet/80">
+                    Login
+                  </Button>
+                </Link>
+                <Link to={"/register"}>
+                  <Button className="cursor-pointer bg-violet text-white hover:bg-violet/80">
+                    Register
+                  </Button>
+                </Link>
+              </div>
             ) : (
               <div>
                 <Popover>
@@ -259,6 +277,14 @@ const Navbar = () => {
                           </h4>
                           <p className="text-sm text-gray-300">{user?.email}</p>
                         </div>
+                      </div>
+                      <div
+                        className="flex items-center gap-2 w-full
+                text-gray-200 hover:text-white 
+                hover:bg-white/20 p-2 rounded-md transition"
+                      >
+                        <User2 />
+                        <Link to={`/profile`}> Profile</Link>
                       </div>
 
                       {/* Options */}
