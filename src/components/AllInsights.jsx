@@ -109,12 +109,11 @@ const AllInsights = () => {
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p className="text-sm text-gray-300 mb-2">{item.summary}</p>
 
-              <a
-                href={`/insight/${item._id}`}
+              <Link to={`/insight/${item._id}`}
                 className="text-violet-400 hover:text-violet-300"
               >
                 View Details →
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>
