@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ImagePlus } from "lucide-react";
+import { ImagePlus, Loader2 } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import axios from "axios";
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 const EditCaseStudy = () => {
   const { id } = useParams();
   const { token } = useSelector((store) => store.auth);
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     tag: "",
@@ -22,7 +23,6 @@ const EditCaseStudy = () => {
     preview: "",
   });
 
-  
   const loadCaseStudy = async () => {
     try {
       const res = await axios.get(`${CASEBLOG_API_END_POINT}/get/${id}`, {
@@ -76,6 +76,7 @@ const EditCaseStudy = () => {
     }
 
     try {
+      setLoading(true);
       const res = await axios.put(
         `${CASEBLOG_API_END_POINT}/update/${id}`,
         formdata,
@@ -84,8 +85,8 @@ const EditCaseStudy = () => {
             "Content-Type": "multipart/form-data",
             Auth: token,
           },
-        },
-        { withCredentials: true }
+          withCredentials: true,
+        }
       );
 
       if (res?.data?.success) {
@@ -102,6 +103,8 @@ const EditCaseStudy = () => {
     } catch (error) {
       console.log(error);
       toast("Update failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -178,12 +181,24 @@ const EditCaseStudy = () => {
             </div>
           </div>
 
-          <Button
-            type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2"
-          >
-            Update Case Study
-          </Button>
+          {loading ? (
+            <>
+              {" "}
+              <Button
+                type="submit"
+                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2"
+              >
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait
+              </Button>
+            </>
+          ) : (
+            <Button
+              type="submit"
+              className="w-full bg-violet-600 hover:bg-green-700 text-white font-semibold py-2"
+            >
+              Update Insight
+            </Button>
+          )}
         </form>
       </motion.div>
     </div>

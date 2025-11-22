@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ImagePlus } from "lucide-react";
+import { ImagePlus, Loader2 } from "lucide-react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 const EditInsight = () => {
   const { id } = useParams();
   const { token } = useSelector((store) => store.auth);
+  const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
     title: "",
@@ -22,7 +23,6 @@ const EditInsight = () => {
     preview: "",
   });
 
-  
   const loadInsight = async () => {
     try {
       const res = await axios.get(`${INSIGHT_API_END_POINT}/get/${id}`, {
@@ -76,6 +76,8 @@ const EditInsight = () => {
     }
 
     try {
+      setLoading(true);
+
       const res = await axios.put(
         `${INSIGHT_API_END_POINT}/update/${id}`,
         formData,
@@ -102,6 +104,8 @@ const EditInsight = () => {
     } catch (error) {
       console.log(error);
       toast("Update Failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -123,7 +127,6 @@ const EditInsight = () => {
         className="p-6 bg-white/10 rounded-2xl backdrop-blur-xl border border-white/20 shadow-xl"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Title</label>
             <Input
@@ -134,7 +137,6 @@ const EditInsight = () => {
               className="bg-white/20 border-white/30 text-white"
             />
           </div>
-
 
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
@@ -150,7 +152,6 @@ const EditInsight = () => {
             />
           </div>
 
-         
           <div>
             <label className="text-gray-300 mb-1 block text-sm">Content</label>
             <Textarea
@@ -162,7 +163,6 @@ const EditInsight = () => {
             />
           </div>
 
-          
           <div>
             <label className="text-gray-300 mb-1 block text-sm">
               Insight Banner Image
@@ -184,13 +184,24 @@ const EditInsight = () => {
               <ImagePlus />
             </div>
           </div>
-
-          <Button
-            type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2"
-          >
-            Update Insight
-          </Button>
+          {loading ? (
+            <>
+              {" "}
+              <Button
+                type="submit"
+                className="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2"
+              >
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please Wait
+              </Button>
+            </>
+          ) : (
+            <Button
+              type="submit"
+              className="w-full bg-violet-600 hover:bg-green-700 text-white font-semibold py-2"
+            >
+              Update Insight
+            </Button>
+          )}
         </form>
       </motion.div>
     </div>
