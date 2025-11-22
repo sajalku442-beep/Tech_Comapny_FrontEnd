@@ -87,6 +87,13 @@ const AddCaseStudy = () => {
           fontWeight: 600,
         },
       });
+      setForm({
+        tag: "",
+        title: "",
+        content: "",
+        category: "",
+        image: null,
+      });
     } catch (error) {
       console.log(error);
       toast(error?.response?.data?.message, {
