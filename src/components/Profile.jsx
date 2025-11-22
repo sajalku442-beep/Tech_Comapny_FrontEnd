@@ -198,6 +198,14 @@ const UserProfile = () => {
             />
 
             <p className="text-gray-300">{user?.email}</p>
+            {user?.email == "admin@gmail.com" ? (
+              <Link to={"/admin/dashboard"}>
+                {" "}
+                <Button className="bg-violet-600 mt-2">Admin DashBoard</Button>
+              </Link>
+            ) : (
+              <></>
+            )}
 
             <p className="mt-4 text-gray-500 text-sm">
               Member since: {new Date(user?.createdAt).toDateString()}
